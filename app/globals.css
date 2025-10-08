@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 330 89% 42%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 270 100% 60%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 240 6% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 330 89% 42%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.5%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 5%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 330 89% 42%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 270 100% 60%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 330 89% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #0a0a0a;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+/* Modern hover effect */
+.modern-hover-effect {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.modern-hover-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(100%);
+}
+
+.modern-hover-effect:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced hover effect for buttons */
+.enhanced-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.enhanced-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.enhanced-hover:hover::before {
+  left: 100%;
+}
+
+.enhanced-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(203, 12, 98, 0.4);
+}
+
+.enhanced-hover:active {
+  transform: translateY(-1px);
+}
+
+/* Glow effect on hover for buttons */
+button:hover {
+  box-shadow: 0 0 15px rgba(203, 12, 98, 0.3);
+}
+
+/* Pulse animation for primary buttons */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(203, 12, 98, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(203, 12, 98, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(203, 12, 98, 0);
+  }
+}
+
+.enhanced-hover:hover {
+  animation: pulse-glow 1.5s infinite;
+}
+
+/* Glass effect styling */
+.glass-effect {
+  background: rgba(20, 20, 25, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass-effect {
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow: 0 0 15px rgba(203, 12, 98, 0.7), 0 0 30px rgba(203, 12, 98, 0.4);
+}
+
+/* Neon border effect */
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #cb0c62, #00f2ff, #cb0c62);
+  border-radius: inherit;
+  z-index: -1;
+  animation: border-animation 3s linear infinite;
+}
+
+@keyframes border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(to right, #cb0c62, #00f2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Dark theme specific styles */
+.dark-theme-card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme-input {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+.dark-theme-input:focus {
+  border-color: #cb0c62;
+  box-shadow: 0 0 0 2px rgba(203, 12, 98, 0.25);
+}
+
+/* Question card hover effect */
+.question-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom radio and checkbox styles for dark theme */
+.dark-radio {
+  border-color: #444;
+  background-color: #2a2a2a;
+}
+
+.dark-radio:checked {
+  border-color: #cb0c62;
+  background-color: #cb0c62;
+}
+
+/* Add these styles for the checkboxes */
+.checkbox-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(203, 12, 98, 0.5);
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: rgba(203, 12, 98, 0.9);
+  border-color: rgba(203, 12, 98, 0.9);
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(203, 12, 98, 0.25);
+}
+
+.checkbox-container label {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-color: #0a0a0a;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-color: #0a0a0a;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-progress {
+  animation: progress-fill 0.5s ease-out forwards;
+}
