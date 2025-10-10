@@ -10,9 +10,8 @@ DermaScan is a modern, AI-powered beauty and skincare web application built with
 - **Personalized Routines**: Get custom-generated skincare and diet plans based on a detailed questionnaire.
 - **User Authentication**: Secure sign-up, login, and password management powered by `better-auth`, supporting both email/password and Google social login.
 - **Interactive UI**: A rich user experience with animations powered by Framer Motion and GSAP, built upon shadcn/ui components.
-- **AI Chatbot**: An integrated AI assistant for instant beauty advice and product recommendations.
 - **Subscription Tiers**: A premium pricing model for accessing advanced features, including a mock payment flow.
-- **Progress Tracking**: Features for logging and tracking sleep patterns to correlate with skin health.
+
 
 ## Tech Stack
 
